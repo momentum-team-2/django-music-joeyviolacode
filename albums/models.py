@@ -11,3 +11,4 @@ class Album(models.Model):
     title = models.CharField(max_length=255)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name="albums")
     release_year = models.IntegerField()
+    favorite = models.BooleanField(default=False)
