@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # Project-specific
     'users',
     'django_music',
+    'albums'
 ]
 
 MIDDLEWARE = [
