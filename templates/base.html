@@ -5,13 +5,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Uptact</title>
+  <title>Album Collection</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-  <div class="main-block">
+    <header class="header-box">
+        <h1>Album Collection</h1>
+    </header>
+    <div class="main-block">
     {% block content %}
     {% endblock %}
-  </div>
+    </div>
 </body>
 </html>

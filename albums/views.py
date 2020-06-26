@@ -5,7 +5,9 @@ from .models import Album, Artist
 
 # Create your views here.
 def list_albums(request):
-    pass
+    albums = Album.objects.all()
+    return render(request, "albums/list_albums.html", { "albums" : albums})
+
 
 def add_album(request):
     pass
