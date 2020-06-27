@@ -29,10 +29,15 @@ def add_album(request):
     return render(request, 'albums/add_album.html', { "form" : form })
 
 def show_album(request, pk):
-    pass
+    album = get_object_or_404(Album, pk=pk)
+    artist = album.artist
+    return render(request, "albums/show_album.html", { "album" : album, "artist" : artist})
 
 def edit_album(request, pk):
     pass
 
 def delete_album(request, pk):
+    pass
+
+def show_artist(request, pk):
     pass
