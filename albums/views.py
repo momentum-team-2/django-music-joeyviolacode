@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 # from django.core.exceptions import ObjectDoesNotExist
 from .models import Album, Artist
-# from .forms import AlbumForm, ArtistForm
+from .forms import AlbumForm, ArtistForm
 
 # Create your views here.
 def list_albums(request):
@@ -10,7 +10,23 @@ def list_albums(request):
 
 
 def add_album(request):
-    pass
+    if request.method == 'GET':
+        form = AlbumForm()
+    else:
+        form = AlbumForm(data=request.POST)
+        if form.is_valid():
+            album = form.save(commit=False)
+            artist_text = album.artist_string
+            artist = None
+            try:
+                artist = Artist.objects.get(name=artist_text)
+            except(Artist.DoesNotExist):
+                artist = Artist(name=artist_text)
+                artist.save()
+            album.artist = artist
+            album.save()
+            return redirect(to='list_albums')
+    return render(request, 'albums/add_album.html', { "form" : form })
 
 def show_album(request, pk):
     pass

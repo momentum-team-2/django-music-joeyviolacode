@@ -13,6 +13,7 @@ class AlbumForm(forms.ModelForm):
         model = Album
         fields = [
             "title",
+            "artist_string",
             "release_year",
             "favorite",
         ]
