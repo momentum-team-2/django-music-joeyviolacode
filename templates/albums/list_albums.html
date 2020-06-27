@@ -15,6 +15,7 @@
             {{ album.release_year }}
         </p>
     </div>
+    <a href="{% url 'edit_album' pk=album.pk %}">Edit Album</a><br>    
 </div>
 {% endfor %}
 {% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+<h2>Add an Album</h2>
+
+{% block content %}
+<div>
+    <form action="{% url 'edit_album' pk=album.pk %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            <button type="submit">Save Changes</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

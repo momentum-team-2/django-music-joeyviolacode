@@ -34,7 +34,25 @@ def show_album(request, pk):
     return render(request, "albums/show_album.html", { "album" : album, "artist" : artist})
 
 def edit_album(request, pk):
-    pass
+    album = get_object_or_404(Album, pk=pk)
+    if request.method == 'GET':
+        form = AlbumForm(instance=album)
+    else:
+        form = AlbumForm(data=request.POST, instance=album)
+        if form.is_valid():
+            album = form.save(commit=False)
+            artist_text = album.artist_string
+            artist = None
+            try:
+                artist = Artist.objects.get(name=artist_text)
+            except(Artist.DoesNotExist):
+                artist = Artist(name=artist_text)
+                artist.save()
+            album.artist = artist
+            album.save()
+            return redirect(to='list_albums')
+    return render(request, 'albums/edit_album.html', { "form" : form , "album" : album })
+    
 
 def delete_album(request, pk):
     pass
