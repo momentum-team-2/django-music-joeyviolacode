@@ -9,17 +9,17 @@
     <a href="{% url 'list_by_year' %}" class="list-sort-button">Year</a>  
     </p>
 </div>
-<div class="album-list">
+<div class="album-list centerer">
     {% for album in albums %}
     <div class="album-pane">
         <div class="image-holder-someday"></div>
         <div class="album-info">
             <a href="{% url 'show_album' pk=album.pk %}" class="title">
                 {{ album.title }}
-            </a>
-            <p class="artist">
-                {{  album.artist.name }}
-            </p>
+            </a><br>
+            <a href="{% url 'show_artist' pk=album.artist.pk %}" class="artist">
+                {{ album.artist }}
+            </a><br>
             <p class="year">
                 {{ album.release_year }}
             </p>

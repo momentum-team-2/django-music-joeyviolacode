@@ -3,6 +3,25 @@
 {% block content %}
 <h2>Delete Album</h2>
 
+<div class="album-pane centerer">
+    <div class="image-holder-someday"></div>
+    <div class="album-info">
+        <a href="{% url 'show_album' pk=album.pk %}" class="title">
+            {{ album.title }}
+        </a><br>
+        <a href="{% url 'show_artist' pk=album.artist.pk %}" class="artist">
+            {{ album.artist }}
+        </a><br>
+        <p class="year">
+            {{ album.release_year }}
+        </p>
+    </div>
+    <div class="buttons-area">
+        <a href="{% url 'edit_album' pk=album.pk %}">Edit  </a>
+        |
+        <a href="{% url 'delete_album' pk=album.pk %}">Delete</a><br>    
+    </div>  
+</div>
 <div>
   <form action="{% url 'delete_album' pk=album.pk %}" method="POST">
     {% csrf_token %}
