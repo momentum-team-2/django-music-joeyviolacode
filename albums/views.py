@@ -8,6 +8,18 @@ def list_albums(request):
     albums = Album.objects.all()
     return render(request, "albums/list_albums.html", { "albums" : albums})
 
+def list_albums_year(request):
+    albums = Album.objects.order_by('release_year', 'artist_string', 'title')
+    return render(request, "albums/list_albums.html", { "albums" : albums})
+
+def list_albums_artist(request):
+    albums = Album.objects.order_by('artist_string', 'release_year', 'title')
+    return render(request, "albums/list_albums.html", { "albums" : albums})
+
+def list_albums_title(request):
+    albums = Album.objects.order_by('title', 'artist_string', 'release_year')
+    return render(request, "albums/list_albums.html", { "albums" : albums})
+
 
 def add_album(request):
     if request.method == 'GET':
@@ -64,4 +76,5 @@ def delete_album(request, pk):
 
 
 def show_artist(request, pk):
-    pass
+    artist = get_object_or_404(Artist, pk=pk)
+    return render(request, "albums/show_artist.html", { "artist" : artist})
