@@ -5,7 +5,7 @@ from .forms import AlbumForm, ArtistForm
 
 # Create your views here.
 def list_albums(request):
-    albums = Album.objects.all()
+    albums = Album.objects.order_by("-id")
     return render(request, "albums/list_albums.html", { "albums" : albums})
 
 def list_albums_year(request):
@@ -40,10 +40,13 @@ def add_album(request):
             return redirect(to='list_albums')
     return render(request, 'albums/add_album.html', { "form" : form })
 
-def show_album(request, pk):
+def delete_album(request, pk):
     album = get_object_or_404(Album, pk=pk)
-    artist = album.artist
-    return render(request, "albums/show_album.html", { "album" : album, "artist" : artist})
+    if request.method == 'POST':
+        album.delete()
+        return redirect(to='list_albums')
+
+    return render(request, "albums/delete_album.html", {"album": album})
 
 def edit_album(request, pk):
     album = get_object_or_404(Album, pk=pk)
@@ -65,15 +68,10 @@ def edit_album(request, pk):
             return redirect(to='list_albums')
     return render(request, 'albums/edit_album.html', { "form" : form , "album" : album })
     
-
-def delete_album(request, pk):
+def show_album(request, pk):
     album = get_object_or_404(Album, pk=pk)
-    if request.method == 'POST':
-        album.delete()
-        return redirect(to='list_albums')
-
-    return render(request, "albums/delete_album.html", {"album": album})
-
+    artist = album.artist
+    return render(request, "albums/show_album.html", { "album" : album, "artist" : artist })
 
 def show_artist(request, pk):
     artist = get_object_or_404(Artist, pk=pk)

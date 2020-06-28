@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="list-sort-panel">
+    <p> 
+    List albums by: 
+    <a href="{% url 'list_by_artist' %}" class="list-sort-button">Artist</a> / 
+    <a href="{% url 'list_by_title' %}" class="list-sort-button">Title</a> / 
+    <a href="{% url 'list_by_year' %}" class="list-sort-button">Year</a>  
+    </p>
+</div>
 <div class="album-list">
     {% for album in albums %}
     <div class="album-pane">
         <div class="image-holder-someday"></div>
         <div class="album-info">
-            <p class="title">
+            <a href="{% url 'show_album' pk=album.pk %}" class="title">
                 {{ album.title }}
-            </p>
+            </a>
             <p class="artist">
                 {{  album.artist.name }}
             </p>
@@ -16,7 +24,11 @@
                 {{ album.release_year }}
             </p>
         </div>
-        <a href="{% url 'edit_album' pk=album.pk %}">Edit Album</a><br>    
+        <div class="buttons-area">
+            <a href="{% url 'edit_album' pk=album.pk %}">Edit  </a>
+            |
+            <a href="{% url 'delete_album' pk=album.pk %}">Delete</a><br>    
+        </div>  
     </div>
     {% endfor %}
 </div>

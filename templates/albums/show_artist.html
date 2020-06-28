@@ -5,20 +5,22 @@
 <div class="other-albums">
     <h2>All Albums by {{ artist.name }}</h2>
 </div>
-{% for album in artist.albums.all %}
-<div class="album-pane">
-    <div class="image-holder-someday"></div>
-    <div class="album-info">
-        <p class="title">
-            {{ album.title }}
-        </p>
-        <p class="artist">
-            {{  album.artist.name }}
-        </p>
-        <p class="year">
-            {{ album.release_year }}
-        </p>
+<div class="album-list">
+    {% for album in artist.albums.all %}
+    <div class="album-pane">
+        <div class="image-holder-someday"></div>
+        <div class="album-info">
+            <p class="title">
+                {{ album.title }}
+            </p>
+            <p class="artist">
+                {{  album.artist.name }}
+            </p>
+            <p class="year">
+                {{ album.release_year }}
+            </p>
+        </div>
     </div>
+    {% endfor %}
 </div>
-{% endfor %}
 {% endblock %}
