@@ -82,3 +82,21 @@ def search_albums(request):
     query = request.GET.get('search_string')
     albums = Album.objects.filter(Q(title__icontains=query) | Q(artist_string__icontains=query))
     return render(request, "albums/list_albums.html", {"albums" : albums})
+
+def add_fave_list(request, pk):
+    album = get_object_or_404(Album, pk=pk)
+    new_fave = album.favorite
+    album.favorite = not new_fave
+    album.save()
+    return redirect(to='list_albums')
+
+
+def add_fave_album(request, pk):
+    album = get_object_or_404(Album, pk=pk)
+    new_fave = album.favorite
+    album.favorite = not new_fave
+    album.save()
+    return redirect(to='show_album', pk=pk)
+
+def add_fave_artist(request, album_pk):
+    pass

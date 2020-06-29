@@ -30,7 +30,10 @@ urlpatterns = [
     path('albums/<int:pk>', albums_views.show_album, name="show_album"), 
     path('albums/<int:pk>/edit/', albums_views.edit_album, name="edit_album"),
     path('albums/<int:pk>/delete', albums_views.delete_album, name="delete_album"),
-    path('albums/show_artist/<int:pk>', albums_views.show_artist, name="show_artist")
+    path('albums/show_artist/<int:pk>', albums_views.show_artist, name="show_artist"),
+    path('albums/add_fave/<int:pk>/list', albums_views.add_fave_list, name="add_fave_list"),
+    path('albums/add_fave/<int:pk>/album', albums_views.add_fave_album, name="add_fave_album"),
+    path('albums/add_fave/<int:pk>/artist', albums_views.add_fave_artist, name="add_fave_artist")
 ]
 
 if settings.DEBUG:

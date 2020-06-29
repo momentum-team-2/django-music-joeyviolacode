@@ -24,7 +24,8 @@ header {
 }
 
 .faved {
-    border: 2px solid yellow;
+    box-shadow: 0px 0px 3px 2px orangered;
+    background-color: orangered
 }
 
 .main-block {

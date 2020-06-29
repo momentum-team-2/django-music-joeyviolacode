@@ -28,7 +28,13 @@
         <div class="buttons-area">
             <a href="{% url 'edit_album' pk=album.pk %}">Edit  </a>
             |
-            <a href="{% url 'delete_album' pk=album.pk %}">Delete</a><br>    
+            <a href="{% url 'delete_album' pk=album.pk %}">Delete</a>
+            |
+            {% if album.favorite %}
+            <a href="#" class="faved">Fave</a>
+            {% else %}
+            <a href="#"">Fave</a>
+            {% endif %}    
         </div>  
     </div>
     

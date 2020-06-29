@@ -21,10 +21,10 @@
             <a href="{% url 'delete_album' pk=album.pk %}">Delete</a>
             |
             {% if album.favorite %}
-            <a href="#" class="faved">Fave</a>
+            <a href="{% url 'add_fave_album' pk=album.pk %}" class="faved">Fave</a>
             {% else %}
-            <a href="#"">Fave</a>
-            {% endif %} 
+            <a href="{% url 'add_fave_album' pk=album.pk %}">Fave</a>
+            {% endif %}
         </div>  
     </div>
 </div>
