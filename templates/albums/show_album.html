@@ -26,9 +26,9 @@
     <h2 class="centerer">All Albums by {{ album.artist.name }}</h2>
     <div class="album-list-flex">
         {% for other_album in artist.albums.all %}
-        <p class="single-album"> {{ other_album.title }} </p>
+        <a href="{% url 'show_album' pk=other_album.pk %}" class="single-album"> {{ other_album.title }} </a>
         {% endfor %}
     </div>
 </div>
-<a href="{% url 'list_albums' %}">Return to the List of Albums</a>
+<a href="{% url 'list_albums' %}" class="returner">Return to the List of Albums</a>
 {% endblock %}

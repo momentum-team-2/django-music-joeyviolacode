@@ -2,12 +2,14 @@
 
 {% block content %}
 <div class="list-sort-panel">
-    <p> 
+    <p class="list-sort-p first"> 
     List albums by: 
     <a href="{% url 'list_by_artist' %}" class="list-sort-button">Artist</a> / 
     <a href="{% url 'list_by_title' %}" class="list-sort-button">Title</a> / 
     <a href="{% url 'list_by_year' %}" class="list-sort-button">Year</a>  
     </p>
+    <p class="list-sort-p second">Search form goes here.</p>
+    <p class="list-sort-p third"><a href="{% url 'add_album' %}" class="list-sort-button">Add an Album</a></p>
 </div>
 <div class="album-list centerer">
     {% for album in albums %}
