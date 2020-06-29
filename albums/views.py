@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 # from django.core.exceptions import ObjectDoesNotExist
 from .models import Album, Artist
 from .forms import AlbumForm, ArtistForm
+from django.db.models import Q
 
 # Create your views here.
 def list_albums(request):
@@ -76,3 +77,8 @@ def show_album(request, pk):
 def show_artist(request, pk):
     artist = get_object_or_404(Artist, pk=pk)
     return render(request, "albums/show_artist.html", { "artist" : artist})
+
+def search_albums(request):
+    query = request.GET.get('search_string')
+    albums = Album.objects.filter(Q(title__icontains=query) | Q(artist_string__icontains=query))
+    return render(request, "albums/list_albums.html", {"albums" : albums})

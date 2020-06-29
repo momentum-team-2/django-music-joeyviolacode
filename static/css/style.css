@@ -17,6 +17,12 @@ header {
     border-bottom: 1px solid black;
 }
 
+.vertical-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
 .main-block {
     height: 90%;
 }
@@ -32,6 +38,12 @@ header {
 .third {
     text-align: right;
 }
+
+input {
+    background-color: rgb(204, 194, 194);
+    border-radius: 3px;
+}
+
 
 footer {
     height: 5%;

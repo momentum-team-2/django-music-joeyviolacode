@@ -8,7 +8,11 @@
     <a href="{% url 'list_by_title' %}" class="list-sort-button">Title</a> / 
     <a href="{% url 'list_by_year' %}" class="list-sort-button">Year</a>  
     </p>
-    <p class="list-sort-p second">Search form goes here.</p>
+    <div class="vertical-center">
+        <form action="{% url 'search_albums' %}"class="list-sort-button second" method="get">
+            <input name="search_string" type="text" placeholder="Search here">
+        </form>
+    </div>
     <p class="list-sort-p third"><a href="{% url 'add_album' %}" class="list-sort-button">Add an Album</a></p>
 </div>
 <div class="album-list centerer">
@@ -29,7 +33,9 @@
         <div class="buttons-area">
             <a href="{% url 'edit_album' pk=album.pk %}">Edit  </a>
             |
-            <a href="{% url 'delete_album' pk=album.pk %}">Delete</a><br>    
+            <a href="{% url 'delete_album' pk=album.pk %}">Delete</a>   
+            |
+            <a href="#">Fave</a>
         </div>  
     </div>
     {% endfor %}
