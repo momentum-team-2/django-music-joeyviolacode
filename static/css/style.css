@@ -23,6 +23,10 @@ header {
     justify-content: space-around;
 }
 
+.faved {
+    border: 2px solid yellow;
+}
+
 .main-block {
     height: 90%;
 }
